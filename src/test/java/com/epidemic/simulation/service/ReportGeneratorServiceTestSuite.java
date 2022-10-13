@@ -1,7 +1,7 @@
 package com.epidemic.simulation.service;
 
 import com.epidemic.simulation.domain.Report;
-import com.epidemic.simulation.domain.Simulation;
+import com.epidemic.simulation.dto.SimulationDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,15 +11,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class ReportGeneratorTestSuite {
+class ReportGeneratorServiceTestSuite {
 
     @Autowired
-    private ReportGenerator reportGenerator;
+    private ReportGeneratorService reportGeneratorService;
 
     @Test
     void testGenerateReports() {
         //Given
-        Simulation simulation = new Simulation(
+        SimulationDto simulationDto = new SimulationDto(
                 1L,
                 "TestName",
                 10000,
@@ -32,13 +32,10 @@ class ReportGeneratorTestSuite {
         );
 
         //When
-        reportGenerator.generateReports(simulation, reportGenerator.getReports());
-        List<Report> resultList = reportGenerator.getReports();
+        reportGeneratorService.generateReports(simulationDto);
+        List<Report> resultList = reportGeneratorService.getReports();
 
         //Then
         assertEquals(100, resultList.size());
-
-        //CleanUp
-        resultList.clear();
     }
 }
