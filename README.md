@@ -1,6 +1,7 @@
 To test the application, after running you can use SWAGGER documentation (http://localhost:8080/swagger-ui.html) or Postman.
-Example body value JSON should look like this: 
-  {
+
+Example body value JSON should look like this:
+
     "simulationName": "TestSim",
     "populationQuantity": 10000,
     "initialNumberOfInfected": 10,
@@ -9,4 +10,3 @@ Example body value JSON should look like this:
     "daysFromInfectionToRecovery": 2,
     "daysFromInfectionToDeath": 1,
     "simulationDuration": 10
-  }
