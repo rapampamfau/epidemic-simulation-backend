@@ -13,6 +13,7 @@ import java.util.List;
 public class ReportGenerator {
 
     private final List<Report> reports = new ArrayList<>();
+    private final List;
 
     private Report generateFirstReport(Simulation simulation) {
         int infected = simulation.getInitialNumberOfInfected();
@@ -28,7 +29,7 @@ public class ReportGenerator {
     }
 
     public void generateReports(Simulation sim, List<Report> reports) {
-        for (int i = 0; i < sim.getSimulationDuration() + 1; i++) {
+        for (int i = 0; i < sim.getSimulationDuration(); i++) {
             Report report;
             if (i == 0) {
                 report = generateFirstReport(sim);

@@ -37,5 +37,8 @@ class ReportGeneratorTestSuite {
 
         //Then
         assertEquals(100, resultList.size());
+
+        //CleanUp
+        resultList.clear();
     }
 }

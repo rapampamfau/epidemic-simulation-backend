@@ -59,15 +59,19 @@ class EpidemicAlgorithmTestSuite {
                 1,
                 100
         );
-        Report report = Report.builder()
-                .numberOfInfected(1160)
-                .numberOfDeaths(20)
-                .numberOfPeopleWhoAcquiredImmunity(0)
-                .build();
+        Report firstReport = new Report(
+                1L,
+                0,
+                1000,
+                9000,
+                0,
+                0
+        );
         List<Report> reports = new ArrayList<>();
+        reports.add(firstReport);
 
         //When
-        double result = epidemicAlgorithm.calculateHealthyPeopleSusceptibleToInfection(simulation, report, reports);
+        double result = epidemicAlgorithm.calculateHealthyPeopleSusceptibleToInfection(simulation, firstReport, reports);
 
         //Then
         assertEquals(8820, result);
@@ -87,33 +91,33 @@ class EpidemicAlgorithmTestSuite {
                 1,
                 100
         );
-        Report firstReport = new Report(
-                1L,
-                0,
+        Report secondReport = new Report(
+                2L,
+                1,
                 1000,
                 9000,
                 0,
                 0
         );
 
-        Report secondReport = new Report(
-                2L,
-                1,
-                1160,
+        Report thirdReport = new Report(
+                3L,
+                2,
+                1180,
                 8820,
                 0,
                 0
+
         );
         List<Report> reports = new ArrayList<>();
-        reports.add(firstReport);
         reports.add(secondReport);
-
+        reports.add(thirdReport);
 
         //When
-        double result = epidemicAlgorithm.calculateDeadPeople(simulation, secondReport, reports);
+        double result = (int) epidemicAlgorithm.calculateDeadPeople(simulation, thirdReport, reports);
 
         //Then
-        assertEquals(20, result);
+        assertEquals(23, result);
     }
 
     @Test
