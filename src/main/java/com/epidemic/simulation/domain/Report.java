@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -28,17 +27,17 @@ public class Report {
 
     @NotNull
     @Column(name = "INFECTED_PEOPLE")
-    private Integer numberOfInfected;
+    private Double numberOfInfected;
 
     @NotNull
     @Column(name = "HEALTHY_PEOPLE_SUSCEPTIBLE_TO_INFECTION")
-    private Integer numberOfHealthyPeopleSusceptibleToInfection;
+    private Double numberOfHealthyPeopleSusceptibleToInfection;
 
     @NotNull
     @Column(name = "DEATHS")
-    private Integer numberOfDeaths;
+    private Double numberOfDeaths;
 
     @NotNull
     @Column(name = "PEOPLE_WHO_ACQUIRED_IMMUNITY")
-    private Integer numberOfPeopleWhoAcquiredImmunity;
+    private Double numberOfPeopleWhoAcquiredImmunity;
 }
