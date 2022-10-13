@@ -6,7 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SimulationRepository extends CrudRepository<Simulation, Long> {
-
-    @Override
-    Simulation save(Simulation simulation);
 }
