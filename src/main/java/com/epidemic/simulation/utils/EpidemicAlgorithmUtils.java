@@ -1,22 +1,22 @@
-package com.epidemic.simulation.service;
+package com.epidemic.simulation.utils;
 
 import com.epidemic.simulation.domain.Report;
 import com.epidemic.simulation.domain.Simulation;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Service
-public class EpidemicAlgorithm {
+@Component
+public class EpidemicAlgorithmUtils {
 
     public double calculateInfectedPeople(Simulation sim, int day, List<Report> reports) {
-        Report rep = reports.get(day);
+        Report rep = reports.get(day - 1);
         if (day == 0) {
             return rep.getNumberOfHealthyPeopleSusceptibleToInfection() * sim.getVirusReproductionRate() / 100
                     + rep.getNumberOfInfected() - rep.getNumberOfDeaths();
         } else {
-            return (reports.get(rep.getDay() - 1).getNumberOfHealthyPeopleSusceptibleToInfection() * sim.getVirusReproductionRate() / 100
-                    + reports.get(rep.getDay() - 1).getNumberOfInfected()) - rep.getNumberOfDeaths();
+            return (reports.get(rep.getDay()).getNumberOfHealthyPeopleSusceptibleToInfection() * sim.getVirusReproductionRate() / 100
+                    + reports.get(rep.getDay()).getNumberOfInfected()) - rep.getNumberOfDeaths();
         }
     }
 
